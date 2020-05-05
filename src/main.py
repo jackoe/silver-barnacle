@@ -1,5 +1,4 @@
-from flask import render_template
-from flask import Flask
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -9,15 +8,20 @@ class article:
         # note: change to grab the title by making a GET request
         self.title = "title here"
 
+articles = [article("https://winesj.com"), article("https://connellyj.github.io/")]
+
 @app.route("/")
 def urls():
-    articles = [article("https://winesj.com"), article("https://connellyj.github.io/")]
     return render_template("index.html", articles = articles)
+
+@app.route("/add", methods=["POST"])
+def add_url():
+    articles.append(article(request.get_json()["url"]))
+    return "okay"
 
 @app.route("/static/<path:path>")
 def send_static(path):
     return send_from_directory("static", path)
-
 
 if __name__ == "__main__":
     app.run()
