@@ -14,10 +14,10 @@ def urls():
     articles = [article("https://winesj.com"), article("https://connellyj.github.io/")]
     return render_template("index.html", articles = articles)
 
-@app.route('/static/<path:path>')
+@app.route("/static/<path:path>")
 def send_static(path):
-    return send_from_directory('static', path)
+    return send_from_directory("static", path)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()
