@@ -1,0 +1,18 @@
+#contents {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2%;
+}
+
+.article {
+    /* max-height: 300px; */
+     max-width: 300px;
+}
+
+.description {
+    line-height: normal;
+}
+
+.nav-wrapper {
+    padding: 0% 3%;
+}
